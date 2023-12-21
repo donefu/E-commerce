@@ -10,7 +10,8 @@ For this project, you will use the Integrated Development Environment (IDE) link
 ### Part C:
 - mainscreen.html: fixed the header, title
 ### Part D:
-- about.html: added title 'About' and with some paragraphs in detail
+- about.html: added title 'About' and with some paragraphs in detail, added 'Back to the main page' button that able to direct to mainscreen.html
+- mainscreen.html: added 'About' button that able to direct to about.html
 ### Part E:
 ### Part F:
 ### Part G:

@@ -18,6 +18,7 @@
 <div class="container">
     <h1>DoneFu Sneaker Shop</h1>
     <hr>
+    <a th:href="@{/about}" class="btn btn-primary btn-sm mb-3">About Our Store</a>
     <h2>Shoes Care</h2>
     <form th:action="@{/mainscreen}">
         Filter: <input type="text" name="partkeyword" id="partkeyword" size="50" th:value="${partkeyword}" required />
