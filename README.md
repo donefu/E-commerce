@@ -10,6 +10,7 @@ For this project, you will use the Integrated Development Environment (IDE) link
 ### Part C:
 - mainscreen.html: fixed the header, title
 ### Part D:
+- about.html: added title 'About' and with some paragraphs in detail
 ### Part E:
 ### Part F:
 ### Part G:
