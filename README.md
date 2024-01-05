@@ -13,6 +13,7 @@ For this project, you will use the Integrated Development Environment (IDE) link
 - about.html: added title 'About' and with some paragraphs in detail, added 'Back to the main page' button that able to direct to mainscreen.html
 - mainscreen.html: added 'About' button that able to direct to about.html
 ### Part E:
+- BootStrapData.java: added an if statement to check count of parts and products to check if there is inventory already there, and update the products and parts
 ### Part F:
 ### Part G:
 ### Part H:
