@@ -15,6 +15,10 @@ For this project, you will use the Integrated Development Environment (IDE) link
 ### Part E:
 - BootStrapData.java: added an if statement to check count of parts and products to check if there is inventory already there, and update the products and parts
 ### Part F:
+- mainscreen.html: added 'Buy Now' button and it decreases the inventory of that product by one, able to display a message that indicates the success or failure of the purchase
+- BuyNowProductController: able to map to the button from mainscreen.html
+- purchaseSuccess.html: display a success purchase message
+- purchaseError.html: display a failure purchase message
 ### Part G:
 ### Part H:
 ### Part I:
