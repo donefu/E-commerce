@@ -3,10 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.domain.InhousePart;
 import com.example.demo.domain.OutsourcedPart;
 import com.example.demo.domain.Part;
-import com.example.demo.service.OutsourcedPartService;
-import com.example.demo.service.OutsourcedPartServiceImpl;
-import com.example.demo.service.PartService;
-import com.example.demo.service.PartServiceImpl;
+import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -38,19 +35,21 @@ public class AddOutsourcedPartController {
     }
 
     @PostMapping("/showFormAddOutPart")
-    public String submitForm(@Valid @ModelAttribute("outsourcedpart") OutsourcedPart part, BindingResult bindingResult, Model theModel){
-        theModel.addAttribute("outsourcedpart",part);
-        if(bindingResult.hasErrors()){
-            return "OutsourcedPartForm";
-        }
-        else{
-        OutsourcedPartService repo=context.getBean(OutsourcedPartServiceImpl.class);
-        OutsourcedPart op=repo.findById((int)part.getId());
-        if(op!=null)part.setProducts(op.getProducts());
+    public String submitForm(@Valid @ModelAttribute("outsourcedpart") OutsourcedPart part, BindingResult bindingResult, Model theModel) {
+        theModel.addAttribute("outsourcedpart", part);
+        if (bindingResult.hasErrors() || !part.isInvValid(part.getInv())) {
+            if (!part.isInvValid(part.getInv())) {
+                bindingResult.rejectValue("inventory", "Invalid inventory", "Inventory is not in the valid range.");
+            }
+            return "OutsourcedPartForm"; // Corrected the return statement
+        } else {
+            OutsourcedPartService repo = context.getBean(OutsourcedPartServiceImpl.class);
+            OutsourcedPart op = repo.findById((int) part.getId());
+            if (op != null) part.setProducts(op.getProducts());
             repo.save(part);
-        return "confirmationaddpart";}
+            return "confirmationaddpart";
+        }
     }
-
 
 
 }

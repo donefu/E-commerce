@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 public class InhousePart extends Part{
     int partId;
 
+
     public InhousePart() {
     }
 

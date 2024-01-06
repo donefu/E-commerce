@@ -69,30 +69,40 @@ public class BootStrapData implements CommandLineRunner {
             o.setInv(5);
             o.setPrice(149.0);
             o.setId(100L);
+            o.setMinValue(1);
+            o.setMaxValue(20);
             outsourcedPartRepository.save(o);
             o.setCompanyName("NVIDIA");
             o.setName("Founders Edition NVIDIA GeForce RTX 4090 24GB GDDR6X Graphics Card");
             o.setInv(15);
             o.setPrice(2299.99);
             o.setId(101L);
+            o.setMinValue(1);
+            o.setMaxValue(20);
             outsourcedPartRepository.save(o);
             o.setCompanyName("Corsair");
             o.setName("Corsair Vengeance RGB Pro 32GB (2x16GB) 2666");
             o.setInv(7);
             o.setPrice(72.99);
             o.setId(102L);
+            o.setMinValue(1);
+            o.setMaxValue(20);
             outsourcedPartRepository.save(o);
             o.setCompanyName("Thermaltake");
             o.setName("Thermaltake Smart 700W ATX 80 Plus Power Supply");
             o.setInv(12);
             o.setPrice(54.99);
             o.setId(103L);
+            o.setMinValue(1);
+            o.setMaxValue(20);
             outsourcedPartRepository.save(o);
             o.setCompanyName("Asus");
             o.setName("Asus ROG Ryujin II 240 ARGB Cooling Fan/Pump");
             o.setInv(6);
             o.setPrice(299.69);
             o.setId(104L);
+            o.setMinValue(1);
+            o.setMaxValue(20);
             outsourcedPartRepository.save(o);
 
             // PRODUCTS
@@ -109,6 +119,8 @@ public class BootStrapData implements CommandLineRunner {
             productRepository.save(RDY_Y64);
 
         }
+
+
 
         System.out.println("Started in Bootstrap");
         System.out.println("Number of Products" + productRepository.count());

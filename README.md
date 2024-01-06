@@ -20,6 +20,13 @@ For this project, you will use the Integrated Development Environment (IDE) link
 - purchaseSuccess.html: display a success purchase message
 - purchaseError.html: display a failure purchase message
 ### Part G:
+- Part.java: initialized max and min value, added a new constructor that allows max and min value, check if it meets the requirements, added setter and getter for both
+- BootStrapData: added max and min values to parts
+- InhousePartForm: display the message
+- OutsourcedPartForm: display the message
+- Renamed the spring-boot-h2-db to spring_d287 in application.properties
+- Part.java: created a new method to check if an inventory is valid
+- AddInhousePartController and AddOutsourcedController: used the method from Part.java to generate a message if the inventory has errors
 ### Part H:
 ### Part I:
 ### Part J:
