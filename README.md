@@ -443,3 +443,7 @@ Insert line 160
 < td th:text="${tempPart.maxValue}">1 < /td >
 </pre>
 ### Part J:
+<pre>
+Remove unused validators:
+    DeletePartValidator
+</pre>
