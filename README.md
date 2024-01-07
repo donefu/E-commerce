@@ -28,5 +28,7 @@ For this project, you will use the Integrated Development Environment (IDE) link
 - Part.java: created a new method to check if an inventory is valid
 - AddInhousePartController and AddOutsourcedController: used the method from Part.java to generate a message if the inventory has errors
 ### Part H:
+- AddInhousePartController: added if else statements to display error messages when adding/updating parts if the inventory is less/more than the min/max number of parts
+- AddOutsourcedPartController: added if else statements to display error messages when adding/updating parts if the inventory is less/more than the min/max number of parts
 ### Part I:
 ### Part J:

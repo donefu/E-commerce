@@ -107,18 +107,19 @@ public abstract class Part implements Serializable {
     public int hashCode() {
         return (int) (id ^ (id >>> 32));
     }
-    @Min(value = 0, message = "Minimum must be equal or bigger than 0")
+
     private int minValue;
 
-    @Min(value = 0, message = "Maximum must be equal or bigger than 0")
+
     private int maxValue;
 
-    public Part (String nameItem, double priceItem, int amountInv, int minValue, int maxValue) {
-        this.name = nameItem;
-        this.price = priceItem;
-        this.inv = amountInv;
-        this.minValue = minValue;
-        this.maxValue = maxValue;
+    public Part(long id, String name, double price, int inv, int min, int max) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.inv = inv;
+        this.minValue = min;
+        this.maxValue = max;
     }
 
     public int getMaxValue() {
@@ -137,7 +138,7 @@ public abstract class Part implements Serializable {
         this.minValue = minValue;
     }
 
-    public boolean isInvValid (int inventory) {
-        return (inventory >= minValue && inventory <= maxValue) ? true : false;
+    public boolean isInvvalid () {
+        return inv >= minValue && inv <= maxValue ? true : false;
     }
 }

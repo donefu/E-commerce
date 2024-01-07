@@ -25,31 +25,39 @@ import javax.validation.Valid;
  *
  */
 @Controller
-public class AddInhousePartController{
+public class AddInhousePartController {
     @Autowired
     private ApplicationContext context;
-
     @GetMapping("/showFormAddInPart")
-    public String showFormAddInhousePart(Model theModel){
-        InhousePart inhousepart=new InhousePart();
-        theModel.addAttribute("inhousepart",inhousepart);
+    public String showFormAddInhousePart(Model theModel) {
+        theModel.addAttribute("inhousepart", new InhousePart());
         return "InhousePartForm";
     }
 
     @PostMapping("/showFormAddInPart")
-    public String submitForm(@Valid @ModelAttribute("inhousepart") InhousePart part, BindingResult theBindingResult, Model theModel){
-        theModel.addAttribute("inhousepart",part);
-        if (theBindingResult.hasErrors() || !part.isInvValid(part.getInv())) {
-            if (!part.isInvValid(part.getInv())) {
-                theBindingResult.rejectValue("inventory", "Invalid inventory", "Inventory is not in the valid range.");
-            }
+    public String submitForm(
+            @Valid @ModelAttribute("inhousepart") InhousePart part,
+            BindingResult theBindingResult,
+            Model theModel) {
+        theModel.addAttribute("inhousepart", part);
+        if (theBindingResult.hasErrors()) {
             return "InhousePartForm";
         } else {
-            InhousePartService repo = context.getBean(InhousePartServiceImpl.class);
-            InhousePart ip = repo.findById((int) part.getId());
-            if (ip != null) part.setProducts(ip.getProducts());
-            repo.save(part);
-
+            if (!part.isInvvalid()) {
+                theBindingResult.rejectValue("inv", "Wrong Inv", "Inventory must in range of min and max");
+                if (part.getInv() < part.getMinValue()) {
+                    theBindingResult.rejectValue("inv", "SmallerThanMinInv", "Inventory needs to be bigger than minimum");
+                } else if (part.getInv() > part.getMaxValue()) {
+                    theBindingResult.rejectValue("inv", "BiggerThanMaxInv", "Inventory needs to be smaller than maximum");
+                }
+                return "InhousePartForm";
+            }
+            InhousePartService inhouseRepo = context.getBean(InhousePartServiceImpl.class);
+            InhousePart inPart = inhouseRepo.findById((int) part.getId());
+            if (inPart != null) {
+                part.setProducts(inPart.getProducts());
+            }
+            inhouseRepo.save(part);
             return "confirmationaddpart";
         }
     }

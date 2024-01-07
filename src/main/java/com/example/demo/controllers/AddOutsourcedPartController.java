@@ -37,16 +37,26 @@ public class AddOutsourcedPartController {
     @PostMapping("/showFormAddOutPart")
     public String submitForm(@Valid @ModelAttribute("outsourcedpart") OutsourcedPart part, BindingResult bindingResult, Model theModel) {
         theModel.addAttribute("outsourcedpart", part);
-        if (bindingResult.hasErrors() || !part.isInvValid(part.getInv())) {
-            if (!part.isInvValid(part.getInv())) {
-                bindingResult.rejectValue("inventory", "Invalid inventory", "Inventory is not in the valid range.");
+
+        if (bindingResult.hasErrors()) {
+            return "OutsourcedPartForm";
+        }
+        else {
+            if (!part.isInvvalid()) {
+                bindingResult.rejectValue("inv", "Wrong Inv", "Inventory must in range of min and max");
+                if (part.getInv() < part.getMinValue()) {
+                    bindingResult.rejectValue("inv", "SmallerThanMinInv", "Inventory needs to be bigger than minimum");
+                } else if (part.getInv() > part.getMaxValue()) {
+                    bindingResult.rejectValue("inv", "BiggerThanMaxInv", "Inventory needs to be smaller than maximum");
+                }
+                return "OutsourcedPartForm";
             }
-            return "OutsourcedPartForm"; // Corrected the return statement
-        } else {
-            OutsourcedPartService repo = context.getBean(OutsourcedPartServiceImpl.class);
-            OutsourcedPart op = repo.findById((int) part.getId());
-            if (op != null) part.setProducts(op.getProducts());
-            repo.save(part);
+            OutsourcedPartService outSourcedRepo = context.getBean(OutsourcedPartServiceImpl.class);
+            OutsourcedPart outPart = outSourcedRepo.findById((int) part.getId());
+            if (outPart != null) {
+                part.setProducts(outPart.getProducts());
+            }
+            outSourcedRepo.save(part);
             return "confirmationaddpart";
         }
     }
