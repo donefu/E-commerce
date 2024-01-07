@@ -1,5 +1,6 @@
 package com.example.demo.bootstrap;
 
+import com.example.demo.domain.InhousePart;
 import com.example.demo.domain.OutsourcedPart;
 import com.example.demo.domain.Part;
 import com.example.demo.domain.Product;
@@ -61,6 +62,7 @@ public class BootStrapData implements CommandLineRunner {
         for (OutsourcedPart part : outsourcedParts) {
             System.out.println(part.getName() + "" + part.getCompanyName());
         }
+
         if (partRepository.count() == 0 && productRepository.count() == 0) {
             // PARTS
             OutsourcedPart o1 = new OutsourcedPart();
@@ -69,8 +71,8 @@ public class BootStrapData implements CommandLineRunner {
             o1.setInv(5);
             o1.setPrice(149.0);
             o1.setId(100L);
-            o1.setMinValue(1);
-            o1.setMaxValue(20);
+            o1.setMinValue(5);
+            o1.setMaxValue(30);
             outsourcedPartRepository.save(o1);
             OutsourcedPart o2 = new OutsourcedPart();
             o2.setCompanyName("NVIDIA");
@@ -87,8 +89,8 @@ public class BootStrapData implements CommandLineRunner {
             o3.setInv(7);
             o3.setPrice(72.99);
             o3.setId(102L);
-            o3.setMinValue(1);
-            o3.setMaxValue(20);
+            o3.setMinValue(5);
+            o3.setMaxValue(40);
             outsourcedPartRepository.save(o3);
             OutsourcedPart o4 = new OutsourcedPart();
             o4.setCompanyName("Thermaltake");
@@ -96,8 +98,8 @@ public class BootStrapData implements CommandLineRunner {
             o4.setInv(12);
             o4.setPrice(54.99);
             o4.setId(103L);
-            o4.setMinValue(1);
-            o4.setMaxValue(20);
+            o4.setMinValue(3);
+            o4.setMaxValue(31);
             outsourcedPartRepository.save(o4);
             OutsourcedPart o5 = new OutsourcedPart();
             o5.setCompanyName("Asus");
@@ -105,7 +107,7 @@ public class BootStrapData implements CommandLineRunner {
             o5.setInv(6);
             o5.setPrice(299.69);
             o5.setId(104L);
-            o5.setMinValue(1);
+            o5.setMinValue(2);
             o5.setMaxValue(20);
             outsourcedPartRepository.save(o5);
 
@@ -131,6 +133,5 @@ public class BootStrapData implements CommandLineRunner {
         System.out.println(productRepository.findAll());
         System.out.println("Number of Parts" + partRepository.count());
         System.out.println(partRepository.findAll());
-
     }
 }

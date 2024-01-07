@@ -42,7 +42,8 @@ public class AddInhousePartController {
         theModel.addAttribute("inhousepart", part);
         if (theBindingResult.hasErrors()) {
             return "InhousePartForm";
-        } else {
+        }
+        else {
             if (!part.isInvvalid()) {
                 theBindingResult.rejectValue("inv", "Wrong Inv", "Inventory must in range of min and max");
                 if (part.getInv() < part.getMinValue()) {
